@@ -1,0 +1,41 @@
+﻿{
+    "accounts": 
+    [
+        {
+            "alias": "AOD1",
+            "email": "devtest1@aoglobal.dev"
+        },
+        {
+            "alias": "AODD",
+            "email": "devtest1@aoglobal.dev"
+        },
+        {
+            "alias": "AODM",
+            "email": "devtest1@aoglobal.dev"
+        },
+        {
+            "alias": "AODO",
+            "email": "devtest1@aoglobal.dev"
+        },
+        {
+            "alias": "AODW",
+            "email": "devtest1@aoglobal.dev"
+        },
+        {
+            "alias": "AODT",
+            "email": "devtest1@aoglobal.dev"
+        },
+        {
+            "alias": "AOAK",
+            "email": "devtest1@aoglobal.dev"
+        },
+        {
+            "alias": "IATK",
+            "email": "devtest1@aoglobal.dev"
+        },
+        {
+            "alias": "2K3U",
+            "email": "devtest1@aoglobal.dev"
+        }
+    ]
+}
