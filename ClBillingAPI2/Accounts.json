@@ -1,4 +1,5 @@
 ﻿{
+<<<<<<< HEAD
     "accounts": [
         {
             "alias": "AOD1",
@@ -92,6 +93,45 @@
                 }
 
                 ]
+=======
+    "accounts": 
+    [
+        {
+            "alias": "AOD1",
+            "email": "devtest1@aoglobal.dev"
+        },
+        {
+            "alias": "AODD",
+            "email": "devtest1@aoglobal.dev"
+        },
+        {
+            "alias": "AODM",
+            "email": "devtest1@aoglobal.dev"
+        },
+        {
+            "alias": "AODO",
+            "email": "devtest1@aoglobal.dev"
+        },
+        {
+            "alias": "AODW",
+            "email": "devtest1@aoglobal.dev"
+        },
+        {
+            "alias": "AODT",
+            "email": "devtest1@aoglobal.dev"
+        },
+        {
+            "alias": "AOAK",
+            "email": "devtest1@aoglobal.dev"
+        },
+        {
+            "alias": "IATK",
+            "email": "devtest1@aoglobal.dev"
+        },
+        {
+            "alias": "2K3U",
+            "email": "devtest1@aoglobal.dev"
+>>>>>>> c70ea35dcdcf7be6bf64808821c4a7ae0eb6f6e8
         }
     ]
 }

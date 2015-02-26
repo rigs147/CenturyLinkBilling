@@ -19,6 +19,7 @@ C:\ao_dev\CenturyLinkBilling\CenturyLinkBilling\obj\Release\CenturyLinkBilling.c
 C:\ao_dev\CenturyLinkBilling\CenturyLinkBilling\obj\Release\CenturyLinkBilling.csprojResolveAssemblyReference.cache
 C:\ao_dev\CenturyLinkBilling\CenturyLinkBilling\obj\Release\CenturyLinkBilling.exe
 C:\ao_dev\CenturyLinkBilling\CenturyLinkBilling\obj\Release\CenturyLinkBilling.pdb
+<<<<<<< HEAD
 C:\Users\Administrator\Desktop\CenturyLinkBilling\CenturyLinkBilling\bin\Release\CenturyLinkBilling.exe.config
 C:\Users\Administrator\Desktop\CenturyLinkBilling\CenturyLinkBilling\bin\Release\CenturyLinkBilling.exe
 C:\Users\Administrator\Desktop\CenturyLinkBilling\CenturyLinkBilling\bin\Release\CenturyLinkBilling.pdb
@@ -40,3 +41,5 @@ C:\Users\Administrator\Desktop\CenturyLinkBilling\CenturyLinkBilling\obj\Release
 C:\Users\Administrator\Desktop\CenturyLinkBilling\CenturyLinkBilling\obj\Release\CenturyLinkBilling.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Desktop\CenturyLinkBilling\CenturyLinkBilling\obj\Release\CenturyLinkBilling.exe
 C:\Users\Administrator\Desktop\CenturyLinkBilling\CenturyLinkBilling\obj\Release\CenturyLinkBilling.pdb
+=======
+>>>>>>> c70ea35dcdcf7be6bf64808821c4a7ae0eb6f6e8

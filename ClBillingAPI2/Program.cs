@@ -53,6 +53,7 @@ namespace ClBillingAPI2
             //const string getBillingUrl = "/v2/groups/{alias}/gb3-833/billing";
             //const string getGroupUrl = "/v2/groups/{alias}/gb3-833";
 
+<<<<<<< HEAD
             dynamic AccountEmails = string.Empty;
 
 
@@ -62,6 +63,8 @@ namespace ClBillingAPI2
             }
 
 
+=======
+>>>>>>> c70ea35dcdcf7be6bf64808821c4a7ae0eb6f6e8
             //Get list of accounts for this api (means api must always be at the top level)
             dynamic accounts = Api1.CallRest("/REST/Account/GetAccounts/", null);
 
@@ -94,10 +97,13 @@ namespace ClBillingAPI2
                 //string emailBodyHeader = "<h1>Billing details for: <h1>" + accountAlias + " - " + account.BusinessName.ToString();
                 StringBuilder mailBody = new StringBuilder();
                 mailBody.Append("<br />");
+<<<<<<< HEAD
                 mailBody.Append("<h2>Please see below your weekly update for Century Link costs</h2>");
                 mailBody.Append("<br />");
                 mailBody.Append("<br />");
                 mailBody.Append("<br />");
+=======
+>>>>>>> c70ea35dcdcf7be6bf64808821c4a7ae0eb6f6e8
                 //mailBody.Append(emailBodyHeader);
 
                 //todo: Disabled accounts, or inactive accounts will not have billing links etc. there is a better way of finding this out.
@@ -110,12 +116,15 @@ namespace ClBillingAPI2
 
                     dynamic billingData = CallRest(billingUrl);
 
+<<<<<<< HEAD
                     double totalTemplateCost = 0;
                     double totalArchiveCost = 0;
                     double totalMonthlyEstimate = 0;
                     double totalMonthToDate = 0;
                     //double totalCurrentHour = 0;
 
+=======
+>>>>>>> c70ea35dcdcf7be6bf64808821c4a7ae0eb6f6e8
                     //Build up email body
                     foreach (var group in billingData.groups)
                     {
@@ -145,13 +154,23 @@ namespace ClBillingAPI2
                             {
                                 hasServers = true;
                                 // The servers object is not empty
+<<<<<<< HEAD
                                
+=======
+                                var totalTemplateCost = 0;
+                                var totalArchiveCost = 0;
+                                var totalMonthlyEstimate = 0;
+                                var totalMonthToDate = 0;
+                                var totalCurrentHour = 0;
+                                
+>>>>>>> c70ea35dcdcf7be6bf64808821c4a7ae0eb6f6e8
                                 
                                 foreach (var serverObject in openGroup.servers)
                                 {
                                     
                                     dynamic server = serverObject.First;
 
+<<<<<<< HEAD
                                     totalTemplateCost += (double)server.templateCost;
                                     totalArchiveCost += (double)server.archiveCost;
                                     totalMonthlyEstimate += (double)server.monthlyEstimate;
@@ -160,6 +179,28 @@ namespace ClBillingAPI2
                                     
                                 }
 
+=======
+                                    totalTemplateCost += (int)server.templateCost;
+                                    totalArchiveCost += (int)server.archiveCost;
+                                    totalMonthlyEstimate += (int)server.monthlyEstimate;
+                                    totalMonthToDate += (int)server.monthToDate;
+                                    totalCurrentHour += (int)server.currentHour;
+                                    
+                                }
+
+                                //mailBody.AppendFormat(emailBodyHeader);
+                                //mailBody.AppendFormat("<h1>Billing details for server group: {0}</h1>", name);
+                                mailBody.AppendFormat("<p>Template Cost: {0}</p>", totalTemplateCost);
+                                mailBody.AppendFormat("<br />");
+                                mailBody.AppendFormat("<p>Archive Cost: {0}</p>", totalArchiveCost);
+                                mailBody.AppendFormat("<br />");
+                                mailBody.AppendFormat("<p>Monthly Estimate: {0}</p>", totalMonthlyEstimate);
+                                mailBody.AppendFormat("<br />");
+                                mailBody.AppendFormat("<p>Month To Date: {0}</p>", totalMonthToDate);
+                                mailBody.AppendFormat("<br />");
+                                mailBody.AppendFormat("<p>Current Hour: {0}</p>", totalCurrentHour);
+
+>>>>>>> c70ea35dcdcf7be6bf64808821c4a7ae0eb6f6e8
                             }
                             else
                             {
@@ -179,6 +220,7 @@ namespace ClBillingAPI2
                         mailBody.AppendFormat("<br />");
                         mailBody.AppendFormat("There are no active servers in this account.");
                     }
+<<<<<<< HEAD
                     else
                     {
                         //mailBody.AppendFormat(emailBodyHeader);
@@ -194,6 +236,8 @@ namespace ClBillingAPI2
                         //mailBody.AppendFormat("<p>Current Hour: ${0}</p>", totalCurrentHour);
                     }
                     
+=======
+>>>>>>> c70ea35dcdcf7be6bf64808821c4a7ae0eb6f6e8
 
                 }
                 else
@@ -214,6 +258,7 @@ namespace ClBillingAPI2
                 //There is no api to find the primary email holder for an account. So for now needs to either be hardcoded in a json file or send email to
                 //every user of the account.
                 //SendEmail("devtest1@aoglobal.dev", subject, mailBody);
+<<<<<<< HEAD
 
                 //foreach (var email in AccountEmails.accounts)
                 //{
@@ -231,6 +276,9 @@ namespace ClBillingAPI2
                     
                 //}
                 SendEmail("sean.rigney@allenovery.com", subject, mailBody);
+=======
+                SendEmail("seanrigney@hotmail.co.uk", subject, mailBody);
+>>>>>>> c70ea35dcdcf7be6bf64808821c4a7ae0eb6f6e8
                 //SendEmail("sean.rigney@allenovery.com", subject, mailBody);
 
             }
@@ -277,6 +325,7 @@ namespace ClBillingAPI2
         public static void SendEmail(string email, string subject, StringBuilder body)
         {
 
+<<<<<<< HEAD
                     MailMessage m = new MailMessage() { IsBodyHtml = true };
                     SmtpClient sc = new SmtpClient();
 
@@ -287,6 +336,18 @@ namespace ClBillingAPI2
                     sc.Host = "relay.t3mx.com";
                     sc.Port = 25;
                     sc.Credentials = new System.Net.NetworkCredential("AOD12-relay@t3mx.com", "-!4P=12gWpObm?,/");
+=======
+                    MailMessage m = new MailMessage();
+                    SmtpClient sc = new SmtpClient();
+
+                    m.From = new MailAddress("AODT1-relay@t3mx.com", "Display name");
+                    m.To.Add(new MailAddress(email, "Display name To"));
+                    m.Subject = subject;
+                    m.Body = "This is a Test Mail";
+                    sc.Host = "relay.t3mx.com";
+                    sc.Port = 25;
+                    sc.Credentials = new System.Net.NetworkCredential("AODT1-relay@t3mx.com", ".s-necM9fHOLUG]:");
+>>>>>>> c70ea35dcdcf7be6bf64808821c4a7ae0eb6f6e8
                     //sc.EnableSsl = true; // runtime encrypt the SMTP communications using SSL
                     sc.Send(m);
         }
