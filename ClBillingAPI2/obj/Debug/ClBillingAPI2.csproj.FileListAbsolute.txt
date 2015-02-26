@@ -13,3 +13,10 @@ C:\Users\Administrator\Desktop\CenturyLinkBilling\ClBillingAPI2\bin\Debug\ClBill
 C:\Users\Administrator\Desktop\CenturyLinkBilling\ClBillingAPI2\bin\Debug\ClBillingAPI2.pdb
 C:\Users\Administrator\Desktop\CenturyLinkBilling\ClBillingAPI2\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Administrator\Desktop\CenturyLinkBilling\ClBillingAPI2\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Administrator\Desktop\CenturyLinkBilling(working)\ClBillingAPI2\bin\Debug\ClBillingAPI2.exe.config
+C:\Users\Administrator\Desktop\CenturyLinkBilling(working)\ClBillingAPI2\obj\Debug\ClBillingAPI2.exe
+C:\Users\Administrator\Desktop\CenturyLinkBilling(working)\ClBillingAPI2\obj\Debug\ClBillingAPI2.pdb
+C:\Users\Administrator\Desktop\CenturyLinkBilling(working)\ClBillingAPI2\bin\Debug\ClBillingAPI2.exe
+C:\Users\Administrator\Desktop\CenturyLinkBilling(working)\ClBillingAPI2\bin\Debug\ClBillingAPI2.pdb
+C:\Users\Administrator\Desktop\CenturyLinkBilling(working)\ClBillingAPI2\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Administrator\Desktop\CenturyLinkBilling(working)\ClBillingAPI2\bin\Debug\Newtonsoft.Json.xml

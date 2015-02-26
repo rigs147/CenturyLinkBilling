@@ -9,9 +9,15 @@ using Newtonsoft.Json.Linq;
 
 namespace ClBillingAPI2
 {
+    /// <summary>
+    /// Main entry
+    /// </summary>
     class Program
     {
-
+        /// <summary>
+        /// Mains the specified arguments.
+        /// </summary>
+        /// <param name="args">The arguments.</param>
         static void Main(string[] args)
         {
             //API version 1 only needed to get all the accounts for the api being used. In this case, top level api.
@@ -21,9 +27,11 @@ namespace ClBillingAPI2
             GetLogin();
 
             GetData();
-
         }
 
+        /// <summary>
+        /// Gets the login.
+        /// </summary>
         public static void GetLogin()
         {
             string bearerToken = null;
@@ -42,25 +50,25 @@ namespace ClBillingAPI2
             dynamic result = JsonConvert.DeserializeObject(responseString.Result);
 
             GlobalVar.bearerToken = result.bearerToken.ToString();
-
         }
 
+        /// <summary>
+        /// Gets the data.
+        /// </summary>
         public static void GetData()
         {
-            //const string getDataCentreListUrl = "/v2/datacenters/{alias}";
-            //const string getDataCentres = "/v2/datacenters/{alias}/gb3";
+            ////const string getDataCentreListUrl = "/v2/datacenters/{alias}";
+            ////const string getDataCentres = "/v2/datacenters/{alias}/gb3";
             const string getDataCentreGroupsUrl = "/v2/datacenters/{alias}/GB3?groupLinks=true";
-            //const string getBillingUrl = "/v2/groups/{alias}/gb3-833/billing";
-            //const string getGroupUrl = "/v2/groups/{alias}/gb3-833";
+            ////const string getBillingUrl = "/v2/groups/{alias}/gb3-833/billing";
+            ////const string getGroupUrl = "/v2/groups/{alias}/gb3-833";
 
             dynamic AccountEmails = string.Empty;
-
 
             using (var webClient = new System.Net.WebClient())
             {
                 AccountEmails = JsonConvert.DeserializeObject(webClient.DownloadString("../../Accounts.json"));
             }
-
 
             //Get list of accounts for this api (means api must always be at the top level)
             dynamic accounts = Api1.CallRest("/REST/Account/GetAccounts/", null);
@@ -81,7 +89,7 @@ namespace ClBillingAPI2
                 bool hasServers = false;
 
                 string accountAlias = account.AccountAlias.ToString();
-                //string email = account.email;
+                ////string email = account.email;
 
                 string dataCentreGroupsUrl = getDataCentreGroupsUrl;
                 dataCentreGroupsUrl = dataCentreGroupsUrl.Replace("{alias}", accountAlias);
@@ -90,17 +98,22 @@ namespace ClBillingAPI2
 
 
                 //Send email to the account primary email contact summarizing the estimates for each server group.
-                string subject = "Billing details for: " + accountAlias + " - " + account.BusinessName.ToString();
+                string subject = "Weekly DEV CLC cost update for: " + accountAlias + " - " + account.BusinessName.ToString();
+
+                ////This is the for the email for Ben. list of all servers for all accounts with creation date and creator
+                List<object> accountServersList = new List<object>();
+                
+
                 //string emailBodyHeader = "<h1>Billing details for: <h1>" + accountAlias + " - " + account.BusinessName.ToString();
                 StringBuilder mailBody = new StringBuilder();
                 mailBody.Append("<br />");
-                mailBody.Append("<h2>Please see below your weekly update for Century Link costs</h2>");
+                mailBody.Append("<h2>Please see below for the weekly update for CenturyLink public cloud based servers:</h2>");
                 mailBody.Append("<br />");
                 mailBody.Append("<br />");
                 mailBody.Append("<br />");
                 //mailBody.Append(emailBodyHeader);
 
-                //todo: Disabled accounts, or inactive accounts will not have billing links etc. there is a better way of finding this out.
+                ////todo: Disabled accounts, or inactive accounts will not have billing links etc. there is a better way of finding this out.
                 if (data.links.Count >= 10)
                 {
                     string billingUrl = data.links[10].href;
@@ -126,16 +139,6 @@ namespace ClBillingAPI2
                             string name = openGroup.name;
 
                             
-                            //********************************************************************************************************************************
-                            //The billing REST call brings back the root harware data for the account as if it is a server group. It isnt. For now this is the
-                            //best way to filter as to get the object that just has the servers you need to make additional REST calls.
-
-                            //Update: The info brought back for the top level should be the summary of all the costs for all the groups in that account. But as
-                            //it technically does not have any servers the api returns 0. So although it is a valid field to have, it does not return the right
-                            //info so still need to filter for now.
-
-                            //GB3 Hardware, at least for us is the main hardware root for the entire data centre.
-                            //********************************************************************************************************************************
                             if (name == "GB3 Hardware")
                             {
                                 break;
@@ -161,13 +164,13 @@ namespace ClBillingAPI2
                                 }
 
                             }
-                            else
-                            {
-                                //the server object is empty
-                                //mailBody.AppendFormat("<h1>Billing details for server group: {0}</h1>", name);
-                                //mailBody.AppendFormat("<br />");
-                                //mailBody.AppendFormat("There are no active servers in this group.");
-                            }
+                            //else
+                            //{
+                            //    //the server object is empty
+                            //    //mailBody.AppendFormat("<h1>Billing details for server group: {0}</h1>", name);
+                            //    //mailBody.AppendFormat("<br />");
+                            //    //mailBody.AppendFormat("There are no active servers in this group.");
+                            //}
 
                         }
 
@@ -187,9 +190,9 @@ namespace ClBillingAPI2
                         mailBody.AppendFormat("<br />");
                         mailBody.AppendFormat("<p>Archive Cost: ${0}</p>", totalArchiveCost);
                         mailBody.AppendFormat("<br />");
-                        mailBody.AppendFormat("<p>Monthly Estimate: ${0}</p>", totalMonthlyEstimate);
+                        mailBody.AppendFormat("<p>Month to date cost: ${0}</p>", totalMonthToDate);
                         mailBody.AppendFormat("<br />");
-                        mailBody.AppendFormat("<p>Month To Date: ${0}</p>", totalMonthToDate);
+                        mailBody.AppendFormat("<p>Monthly estimate: ${0}</p>", totalMonthlyEstimate);
                         mailBody.AppendFormat("<br />");
                         //mailBody.AppendFormat("<p>Current Hour: ${0}</p>", totalCurrentHour);
                     }
@@ -274,6 +277,12 @@ namespace ClBillingAPI2
         //    client.Send(mailMessage);
         //}
 
+        /// <summary>
+        /// Sends the email.
+        /// </summary>
+        /// <param name="email">The email.</param>
+        /// <param name="subject">The subject.</param>
+        /// <param name="body">The body.</param>
         public static void SendEmail(string email, string subject, StringBuilder body)
         {
 
@@ -293,6 +302,11 @@ namespace ClBillingAPI2
 
 
 
+        /// <summary>
+        /// Calls the rest service.
+        /// </summary>
+        /// <param name="uniqueUrl">The unique URL.</param>
+        /// <returns>JSON response</returns>
         public static object CallRest(string uniqueUrl)
         {
 

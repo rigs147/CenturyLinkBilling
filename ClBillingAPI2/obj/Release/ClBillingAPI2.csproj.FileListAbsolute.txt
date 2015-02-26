@@ -14,3 +14,13 @@ C:\Users\Administrator\Desktop\CenturyLinkBilling\ClBillingAPI2\bin\Release\ClBi
 C:\Users\Administrator\Desktop\CenturyLinkBilling\ClBillingAPI2\bin\Release\Newtonsoft.Json.dll
 C:\Users\Administrator\Desktop\CenturyLinkBilling\ClBillingAPI2\bin\Release\Newtonsoft.Json.xml
 C:\Users\Administrator\Desktop\CenturyLinkBilling\ClBillingAPI2\obj\Release\ClBillingAPI2.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\CenturyLinkBilling(working)\ClBillingAPI2\bin\Release\ClBillingAPI2.exe.config
+C:\Users\Administrator\Desktop\CenturyLinkBilling(working)\ClBillingAPI2\bin\Release\ClBillingAPI2.exe
+C:\Users\Administrator\Desktop\CenturyLinkBilling(working)\ClBillingAPI2\bin\Release\ClBillingAPI2.pdb
+C:\Users\Administrator\Desktop\CenturyLinkBilling(working)\ClBillingAPI2\bin\Release\Newtonsoft.Json.dll
+C:\Users\Administrator\Desktop\CenturyLinkBilling(working)\ClBillingAPI2\bin\Release\Newtonsoft.Json.xml
+C:\Users\Administrator\Desktop\CenturyLinkBilling(working)\ClBillingAPI2\obj\Release\ClBillingAPI2.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\CenturyLinkBilling(working)\ClBillingAPI2\obj\Release\ClBillingAPI2.exe
+C:\Users\Administrator\Desktop\CenturyLinkBilling(working)\ClBillingAPI2\obj\Release\ClBillingAPI2.pdb
+C:\Users\Administrator\Desktop\CenturyLinkBilling(working)\ClBillingAPI2\bin\Release\ClBillingAPI2.exe.CodeAnalysisLog.xml
+C:\Users\Administrator\Desktop\CenturyLinkBilling(working)\ClBillingAPI2\bin\Release\ClBillingAPI2.exe.lastcodeanalysissucceeded

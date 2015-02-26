@@ -1,16 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-
-namespace ClBillingAPI2
+﻿namespace ClBillingAPI2
 {
-    class Api1
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Net;
+    using System.Text;
+    using System.Threading.Tasks;
+    using Newtonsoft.Json;
+
+    /// <summary>
+    /// <para>Login</para>
+    /// </summary>
+    public class Api1
     {
+        /// <summary>
+        /// Gets the api login.
+        /// </summary>
         public static void GetApi1Login()
         {
             string authCookie = null;
@@ -23,32 +29,38 @@ namespace ClBillingAPI2
             string payload = string.Format("{{ 'APIKey': '" + key + "', 'Password': '" + pw + "' }}");
             req.ContentType = "application/json";
 
-            //convert message to send to byte array
+            ////convert message to send to byte array
             byte[] byteData = UTF8Encoding.UTF8.GetBytes(payload.ToString());
             req.ContentLength = byteData.Length;
 
-            //put request into stream
+            ////put request into stream
             using (Stream postStream = req.GetRequestStream())
             {
                 postStream.Write(byteData, 0, byteData.Length);
             }
 
-            //get response and process it
+            ////get response and process it
             using (HttpWebResponse resp = req.GetResponse() as HttpWebResponse)
             {
-                //create variable to hold cookie
+                ////create variable to hold cookie
                 GlobalVar.authCookie = resp.Headers["Set-Cookie"];
             }
         }
 
+        /// <summary>
+        /// Calls the rest service.
+        /// </summary>
+        /// <param name="uniqueUrl">The unique URL.</param>
+        /// <param name="postData">The post data.</param>
+        /// <returns>JSON response</returns>
         public static object CallRest(string uniqueUrl, string postData)
         {
-            //create new web request
+            // create new web request
             HttpWebRequest reqQuery = WebRequest.Create("https://api.tier3.com" + uniqueUrl) as HttpWebRequest;
             reqQuery.Method = "POST";
             reqQuery.Headers.Add("Cookie", GlobalVar.authCookie);
 
-            //string acctAlias = accountAlias;
+            ////string acctAlias = accountAlias;
 
             string queryPayload = string.Empty;
 
@@ -59,31 +71,30 @@ namespace ClBillingAPI2
 
             reqQuery.ContentType = "application/json";
 
-            //convert message to send to byte array
+            // convert message to send to byte array
             byte[] byteDataQuery = UTF8Encoding.UTF8.GetBytes(queryPayload.ToString());
             reqQuery.ContentLength = byteDataQuery.Length;
 
             dynamic queryResponse = null;
 
-            //put request into stream
+            // put request into stream
             using (Stream postStream = reqQuery.GetRequestStream())
             {
                 postStream.Write(byteDataQuery, 0, byteDataQuery.Length);
             }
 
-            //invoke service
+            // invoke service
             using (HttpWebResponse resp = reqQuery.GetResponse() as HttpWebResponse)
             {
                 // Get the response stream  
                 using (StreamReader reader = new StreamReader(resp.GetResponseStream()))
                 {
-                    //load response
+                    // load response
                     queryResponse = reader.ReadToEnd();
                 }
             }
 
             return JsonConvert.DeserializeObject(queryResponse);
-
         }
     }
 }
