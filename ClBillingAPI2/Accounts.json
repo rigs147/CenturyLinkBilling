@@ -1,0 +1,97 @@
+﻿{
+    "accounts": [
+        {
+            "alias": "AOD1",
+            "emails": [
+                {
+                    "email": "Mike.Ling@allenovery.com"
+                },
+                { 
+                    "email": "Andrew.Prestwood@allenovery.com"
+                },
+                { 
+                    "email": "Ben.Tyler@allenovery.com"
+                }
+
+                ]
+        },
+        {
+            "alias": "AODD",
+            "emails": [
+                {
+                    "email": "sean.rigney@allenovery.com"
+                }
+
+                ]
+        },
+        {
+            "alias": "AODM",
+            "emails": [
+                {
+                    "email": "sean.rigney@allenovery.com"
+                }
+
+                ]
+        },
+        {
+            "alias": "AODO",
+            "emails": [
+                {
+                    "email": "Jason.Barrett@allenovery.com"
+                },
+                { 
+                    "email": "Mark.Manning@allenovery.com"
+                },
+                { 
+                    "email": "Ben.Tyler@allenovery.com"
+                }
+
+                ]
+        },
+        {
+            "alias": "AODW",
+            "emails": [
+                {
+                    "email": "sean.rigney@allenovery.com"
+                }
+
+                ]
+        },
+        {
+            "alias": "AODT",
+            "emails": [
+                {
+                    "email": "Duncan.Ralph@allenovery.com"
+                },
+                { 
+                    "email": "Ben.Tyler@allenovery.com"
+                }
+
+                ]
+        },
+        {
+            "alias": "2K3U",
+            "emails": [
+                {
+                    "email": "Patrick.Fear@allenovery.com"
+                },
+                { 
+                    "email": "Ben.Tyler@allenovery.com"
+                }
+
+                ]
+        },
+        {
+            "alias": "ATK2",
+            "emails": [
+                {
+                    "email": "Stephen.Pap@allenovery.com"
+                },
+                { 
+                    "email": "Ben.Tyler@allenovery.com"
+                }
+
+                ]
+        }
+    ]
+}

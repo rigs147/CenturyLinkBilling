@@ -1,0 +1,16 @@
+C:\ao_dev\CenturyLinkBilling\ClBillingAPI2\bin\Release\ClBillingAPI2.exe.config
+C:\ao_dev\CenturyLinkBilling\ClBillingAPI2\bin\Release\ClBillingAPI2.exe
+C:\ao_dev\CenturyLinkBilling\ClBillingAPI2\bin\Release\ClBillingAPI2.pdb
+C:\ao_dev\CenturyLinkBilling\ClBillingAPI2\bin\Release\Newtonsoft.Json.dll
+C:\ao_dev\CenturyLinkBilling\ClBillingAPI2\bin\Release\Newtonsoft.Json.xml
+C:\ao_dev\CenturyLinkBilling\ClBillingAPI2\obj\Release\ClBillingAPI2.exe
+C:\ao_dev\CenturyLinkBilling\ClBillingAPI2\obj\Release\ClBillingAPI2.pdb
+C:\ao_dev\CenturyLinkBilling\ClBillingAPI2\obj\Release\ClBillingAPI2.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\CenturyLinkBilling\ClBillingAPI2\bin\Release\ClBillingAPI2.exe.config
+C:\Users\Administrator\Desktop\CenturyLinkBilling\ClBillingAPI2\obj\Release\ClBillingAPI2.exe
+C:\Users\Administrator\Desktop\CenturyLinkBilling\ClBillingAPI2\obj\Release\ClBillingAPI2.pdb
+C:\Users\Administrator\Desktop\CenturyLinkBilling\ClBillingAPI2\bin\Release\ClBillingAPI2.exe
+C:\Users\Administrator\Desktop\CenturyLinkBilling\ClBillingAPI2\bin\Release\ClBillingAPI2.pdb
+C:\Users\Administrator\Desktop\CenturyLinkBilling\ClBillingAPI2\bin\Release\Newtonsoft.Json.dll
+C:\Users\Administrator\Desktop\CenturyLinkBilling\ClBillingAPI2\bin\Release\Newtonsoft.Json.xml
+C:\Users\Administrator\Desktop\CenturyLinkBilling\ClBillingAPI2\obj\Release\ClBillingAPI2.csprojResolveAssemblyReference.cache

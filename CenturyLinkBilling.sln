@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CenturyLinkBilling", "CenturyLinkBilling\CenturyLinkBilling.csproj", "{DA140D2F-8E9B-40F5-81F5-95C459A54BAE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClBillingAPI2", "ClBillingAPI2\ClBillingAPI2.csproj", "{F1A81B2C-0521-4DF1-A705-0A1CF9C9C796}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA140D2F-8E9B-40F5-81F5-95C459A54BAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA140D2F-8E9B-40F5-81F5-95C459A54BAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA140D2F-8E9B-40F5-81F5-95C459A54BAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA140D2F-8E9B-40F5-81F5-95C459A54BAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1A81B2C-0521-4DF1-A705-0A1CF9C9C796}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1A81B2C-0521-4DF1-A705-0A1CF9C9C796}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1A81B2C-0521-4DF1-A705-0A1CF9C9C796}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1A81B2C-0521-4DF1-A705-0A1CF9C9C796}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
