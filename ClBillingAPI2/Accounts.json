@@ -87,11 +87,24 @@
                 {
                     "email": "Stephen.Pap@allenovery.com"
                 },
-                { 
+                {
                     "email": "Ben.Tyler@allenovery.com"
                 }
 
-                ]
+            ]
+        },
+        {
+            "alias": "ATK2",
+            "emails": [
+                {
+                    "email": "Stephen.Pap@allenovery.com"
+                },
+                {
+                    "email": "Ben.Tyler@allenovery.com"
+                }
+
+            ]
         }
+
     ]
 }

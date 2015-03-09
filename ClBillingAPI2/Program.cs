@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -83,13 +84,37 @@ namespace ClBillingAPI2
                     accountList.Add(account);
                 }
             }
+            
+            //todo: ben start
+            ////This is for the email for Ben. list of all servers for all accounts with creation date and creator
+
+            List<object> accountServersList = new List<object>();
+
+            //var accountServers = new AccountServers();
+            StringBuilder TotalServersMailBody = new StringBuilder();
+            TotalServersMailBody.Append("<br />");
+            TotalServersMailBody.Append("<h2>Please see below for all servers in all accounts</h2>");
+            TotalServersMailBody.Append("<br />");
+            TotalServersMailBody.Append("<br />");
+            TotalServersMailBody.Append("<br />");
+            //todo: ben end
 
             foreach (dynamic account in accountList)
             {
+                
+                //todo: ben
+                List<object> accountServers = new List<object>();
+                
                 bool hasServers = false;
 
                 string accountAlias = account.AccountAlias.ToString();
                 ////string email = account.email;
+
+                //todo: ben
+                TotalServersMailBody.AppendFormat("<h2>Account: {0}</h2>", accountAlias);
+                TotalServersMailBody.Append("<br />");
+                TotalServersMailBody.Append("<h3>Servers:</h3>");
+                /////
 
                 string dataCentreGroupsUrl = getDataCentreGroupsUrl;
                 dataCentreGroupsUrl = dataCentreGroupsUrl.Replace("{alias}", accountAlias);
@@ -98,12 +123,8 @@ namespace ClBillingAPI2
 
 
                 //Send email to the account primary email contact summarizing the estimates for each server group.
-                string subject = "Weekly DEV CLC cost update for: " + accountAlias + " - " + account.BusinessName.ToString();
-
-                ////This is the for the email for Ben. list of all servers for all accounts with creation date and creator
-                List<object> accountServersList = new List<object>();
-                
-
+                string subject = "Weekly DEV CLC cost update for: " + accountAlias + " - " + account.BusinessName.ToString();               
+        
                 //string emailBodyHeader = "<h1>Billing details for: <h1>" + accountAlias + " - " + account.BusinessName.ToString();
                 StringBuilder mailBody = new StringBuilder();
                 mailBody.Append("<br />");
@@ -148,18 +169,37 @@ namespace ClBillingAPI2
                             {
                                 hasServers = true;
                                 // The servers object is not empty
-                               
-                                
+
+                                //dynamic a = openGroup.servers.First;
+
                                 foreach (var serverObject in openGroup.servers)
                                 {
-                                    
-                                    dynamic server = serverObject.First;
 
+                                    var serverName = serverObject.Name.ToString();
+                                    dynamic serverData = CallRest(string.Format("/v2/servers/{0}/{1}", accountAlias, serverName));
+                                    string createdBy = serverData.changeInfo.createdBy.ToString();
+                                    string createdDate = serverData.changeInfo.createdDate.ToString();
+                                    //todo: ben
+                                    //TotalServersMailBody.Append("<h3>Servers</h3>");
+                                    TotalServersMailBody.Append("<br />");
+                                    TotalServersMailBody.AppendFormat("<p>Server Name: {0}</p>", serverName);
+                                    TotalServersMailBody.AppendFormat("<p>Created By: {0}</p>", createdBy);
+                                    TotalServersMailBody.AppendFormat("<p>Creation Date: {0}</p>", createdDate);
+
+                                    /////
+
+
+
+
+                                    dynamic server = serverObject.First;
+                                                                       
                                     totalTemplateCost += (double)server.templateCost;
                                     totalArchiveCost += (double)server.archiveCost;
                                     totalMonthlyEstimate += (double)server.monthlyEstimate;
                                     totalMonthToDate += (double)server.monthToDate;
                                     //totalCurrentHour += (double)server.currentHour;
+
+
                                     
                                 }
 
@@ -178,7 +218,6 @@ namespace ClBillingAPI2
                     if (!hasServers)
                     {
                         //no servers for the account
-                        //mailBody.AppendFormat("<h1>Billing details for account: {0}</h1>", name);
                         mailBody.AppendFormat("<br />");
                         mailBody.AppendFormat("There are no active servers in this account.");
                     }
@@ -190,9 +229,9 @@ namespace ClBillingAPI2
                         mailBody.AppendFormat("<br />");
                         mailBody.AppendFormat("<p>Archive Cost: ${0}</p>", totalArchiveCost);
                         mailBody.AppendFormat("<br />");
-                        mailBody.AppendFormat("<p>Month to date cost: ${0}</p>", totalMonthToDate);
+                        mailBody.AppendFormat("<p style='color: red'>Month to date cost: ${0}</p>", totalMonthToDate);
                         mailBody.AppendFormat("<br />");
-                        mailBody.AppendFormat("<p>Monthly estimate: ${0}</p>", totalMonthlyEstimate);
+                        mailBody.AppendFormat("<p style='color: red'>Monthly estimate: ${0}</p>", totalMonthlyEstimate);
                         mailBody.AppendFormat("<br />");
                         //mailBody.AppendFormat("<p>Current Hour: ${0}</p>", totalCurrentHour);
                     }
@@ -233,49 +272,16 @@ namespace ClBillingAPI2
                 //    }
                     
                 //}
+                mailBody.AppendFormat("<p>Kind Regards,</p>");
+                mailBody.AppendFormat("<p>CLC</p>");
                 SendEmail("sean.rigney@allenovery.com", subject, mailBody);
                 //SendEmail("sean.rigney@allenovery.com", subject, mailBody);
 
             }
+            //todo: commenting this out for now as Ben no longer wants the list of servers
+            //SendEmail("sean.rigney@allenovery.com", "All Century Link servers", TotalServersMailBody);
 
         }
-
-        //public static void SendEmail(string email, string subject, StringBuilder body)
-        //{
-        //    var server = "smtpinternal.omnia.aoglobal.dev";
-        //    string fromAddress = "CenturyLink@allenovery.com";
-
-        //    var client = new SmtpClient(server);
-
-        //    //System.Net.NetworkCredential credentials =
-        //    //    new System.Net.NetworkCredential("smtpUser", "pasword");
-
-        //    var mailMessage = new MailMessage(fromAddress, email, subject, body.ToString()) { IsBodyHtml = true };
-
-        //    client.Send(mailMessage);
-        //}
-
-        //public static void SendEmail(string email, string subject, StringBuilder body)
-        //{
-
-        //    //AODT1-relay@t3mx.com
-
-        //    //    .s-necM9fHOLUG]:
-        //    var server = "relay.t3mx.com";
-        //    string fromAddress = "CenturyLink@allenovery.com";
-
-        //    var client = new SmtpClient(server);
-
-        //    //System.Net.NetworkCredential credentials =
-        //    //    new System.Net.NetworkCredential("smtpUser", "pasword");
-            
-        //    System.Net.NetworkCredential credentials =
-        //        new System.Net.NetworkCredential("AODT1", ".s-necM9fHOLUG]:");
-
-        //    var mailMessage = new MailMessage(fromAddress, email, subject, body.ToString()) { IsBodyHtml = true };
-
-        //    client.Send(mailMessage);
-        //}
 
         /// <summary>
         /// Sends the email.
@@ -325,5 +331,18 @@ namespace ClBillingAPI2
             return restResult;
         }
 
+    }
+
+    public class AccountServers
+    {
+
+        public AccountServers(string accountName, List<object> serverList)
+        {
+            AccountName = accountName;
+            Serverslist = serverList;
+        }
+        
+        static string AccountName { get; set; }
+        static List<object> Serverslist { get; set; }
     }
 }

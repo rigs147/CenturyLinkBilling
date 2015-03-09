@@ -20,3 +20,4 @@ C:\Users\Administrator\Desktop\CenturyLinkBilling(working)\ClBillingAPI2\bin\Deb
 C:\Users\Administrator\Desktop\CenturyLinkBilling(working)\ClBillingAPI2\bin\Debug\ClBillingAPI2.pdb
 C:\Users\Administrator\Desktop\CenturyLinkBilling(working)\ClBillingAPI2\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Administrator\Desktop\CenturyLinkBilling(working)\ClBillingAPI2\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Administrator\Desktop\CenturyLinkBilling(working)\ClBillingAPI2\obj\Debug\ClBillingAPI2.csprojResolveAssemblyReference.cache
